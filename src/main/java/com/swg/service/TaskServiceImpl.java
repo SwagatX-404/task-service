@@ -52,7 +52,26 @@ public class TaskServiceImpl implements TaskService{
 
     @Override
     public Task updateTask(Long id, Task updatedTask, Long userId) throws Exception {
-        return null;
+
+        Task existingTask = getTaskById(id);
+
+        if(updatedTask.getTitle()!=null){
+            existingTask.setTitle(updatedTask.getTitle());
+        }
+        if(updatedTask.getImage()!=null){
+            existingTask.setImage(updatedTask.getImage());
+        }
+        if(updatedTask.getDescription()!=null) {
+            existingTask.setDescription(updatedTask.getDescription());
+        }
+        if(updatedTask.getStatus()!=null){
+            existingTask.setStatus(updatedTask.getStatus());
+        }
+        if(updatedTask.getDeadline()!=null){
+            existingTask.setDeadline(updatedTask.getDeadline());
+        }
+
+        return taskRepository.save(existingTask);
     }
 
     @Override
