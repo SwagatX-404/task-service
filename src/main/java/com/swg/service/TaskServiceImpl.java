@@ -20,7 +20,12 @@ public class TaskServiceImpl implements TaskService{
     @Override
     public Task createTask(Task task, String requesterRole) throws Exception {
 
-        return null;
+        if(requesterRole.equals(("ROLE_ADMIN"))){
+           throw new Exception("Only Admin can create task");
+        }
+        task.setStatus(TaskStatus.PENDING);
+        task.setCreatedAt(LocalDateTime.now());
+        return taskRepository.save(task);
     }
 
     @Override
