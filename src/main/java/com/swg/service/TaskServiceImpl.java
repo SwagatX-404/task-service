@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -37,7 +38,16 @@ public class TaskServiceImpl implements TaskService{
 
     @Override
     public List<Task> getAllTask(TaskStatus status) {
-        return List.of();
+        List<Task> allTask = taskRepository.findAll();
+
+        List<Task> filteredTasks = allTask.stream()
+                .filter(task ->status ==null || task
+                                .getStatus()
+                                .name()
+                                .equalsIgnoreCase(status.toString())
+                        ).collect(Collectors.toList());
+
+        return filteredTasks;
     }
 
     @Override
