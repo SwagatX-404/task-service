@@ -94,7 +94,17 @@ public class TaskServiceImpl implements TaskService{
 
     @Override
     public List<Task> assignedUsersTask(Long userId, TaskStatus status) {
-        return List.of();
+
+        List<Task> allTask= taskRepository.findByAssignedUserId(userId);
+
+        List<Task> filteredTasks = allTask.stream()
+                .filter(task ->status ==null || task
+                        .getStatus()
+                        .name()
+                        .equalsIgnoreCase(status.toString())
+                ).collect(Collectors.toList());
+
+        return filteredTasks;
     }
 
     @Override
