@@ -109,6 +109,9 @@ public class TaskServiceImpl implements TaskService{
 
     @Override
     public Task completeTask(Long taskId) throws Exception {
-        return null;
+
+        Task task = getTaskById(taskId);
+        task.setStatus(TaskStatus.DONE);
+        return taskRepository.save(task);
     }
 }
