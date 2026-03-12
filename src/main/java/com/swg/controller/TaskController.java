@@ -58,5 +58,17 @@ public class TaskController {
     }
 
 
+    @GetMapping()
+    public ResponseEntity<List<Task>> getAllTask(
+            @RequestParam(required = false) TaskStatus status,
+            @RequestHeader("Authorization") String jwt) throws Exception {
+        UserDto user = userService.getUserProfile(jwt);
+
+        List<Task> tasks = taskService.getAllTask(status);
+
+        return new ResponseEntity<>(tasks, HttpStatus.CREATED);
+    }
+
+
 
 }
