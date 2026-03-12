@@ -70,5 +70,17 @@ public class TaskController {
     }
 
 
+    @PutMapping("/{id}/user/{userid}/assigned")
+    public ResponseEntity<Task> assignedTaskToUser(
+            @PathVariable Long userid,
+            @PathVariable Long id,
+            @RequestHeader("Authorization") String jwt) throws Exception {
+        UserDto user = userService.getUserProfile(jwt);
+
+        Task tasks = taskService.assignedToUser(userid, id);
+        return new ResponseEntity<>(tasks, HttpStatus.CREATED);
+    }
+
+
 
 }
