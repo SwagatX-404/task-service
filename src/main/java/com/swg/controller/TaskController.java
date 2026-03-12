@@ -2,6 +2,7 @@ package com.swg.controller;
 
 
 import com.swg.model.Task;
+import com.swg.model.TaskStatus;
 import com.swg.model.UserDto;
 import com.swg.service.TaskService;
 import com.swg.service.UserService;
@@ -10,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/tasks")
@@ -41,6 +44,19 @@ public class TaskController {
 
         return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
+
+
+    @GetMapping("/user")
+    public ResponseEntity<List<Task>> getAssignedUsersTask(
+            @RequestParam(required = false) TaskStatus status,
+            @RequestHeader("Authorization") String jwt) throws Exception {
+        UserDto user = userService.getUserProfile(jwt);
+
+        List<Task> tasks = taskService.assignedUsersTask(user.getId(), status);
+
+        return new ResponseEntity<>(tasks, HttpStatus.CREATED);
+    }
+
 
 
 }
