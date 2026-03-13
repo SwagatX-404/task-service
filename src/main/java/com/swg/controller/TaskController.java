@@ -42,7 +42,7 @@ public class TaskController {
 
         Task task = taskService.getTaskById(id);
 
-        return new ResponseEntity<>(task, HttpStatus.CREATED);
+        return new ResponseEntity<>(task, HttpStatus.OK);
     }
 
 
@@ -54,7 +54,7 @@ public class TaskController {
 
         List<Task> tasks = taskService.assignedUsersTask(user.getId(), status);
 
-        return new ResponseEntity<>(tasks, HttpStatus.CREATED);
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
 
@@ -66,7 +66,7 @@ public class TaskController {
 
         List<Task> tasks = taskService.getAllTask(status);
 
-        return new ResponseEntity<>(tasks, HttpStatus.CREATED);
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
 
@@ -78,9 +78,19 @@ public class TaskController {
         UserDto user = userService.getUserProfile(jwt);
 
         Task tasks = taskService.assignedToUser(userid, id);
-        return new ResponseEntity<>(tasks, HttpStatus.CREATED);
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Task> updateTask(
+            @PathVariable Long id,
+            @RequestBody Task req,
+            @RequestHeader("Authorization") String jwt) throws Exception {
+        UserDto user = userService.getUserProfile(jwt);
+
+        Task tasks = taskService.updateTask(id, req, user.getId());
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
+    }
 
 }
