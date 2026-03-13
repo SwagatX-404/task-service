@@ -93,4 +93,13 @@ public class TaskController {
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Task> completeTask(
+            @PathVariable Long id) throws Exception {
+
+        Task tasks = taskService.completeTask(id);
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
+    }
+
 }
