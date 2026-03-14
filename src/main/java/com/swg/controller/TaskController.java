@@ -94,7 +94,7 @@ public class TaskController {
     }
 
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/complete")
     public ResponseEntity<Task> completeTask(
             @PathVariable Long id) throws Exception {
 
