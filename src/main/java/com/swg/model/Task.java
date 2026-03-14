@@ -29,7 +29,7 @@ public class Task {
 
     private String image;
 
-    private Long assigneeId;
+    private Long assignedUserId;
 
     private List<String> tags=new ArrayList<>();
 
