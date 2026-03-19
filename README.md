@@ -30,7 +30,18 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 ```
 
-## Author
-- Swagat Murmu
-- <Master of Computer Applications>
-- Java | Spring Boot | SQL | JS | React 
+## 👤 Author
+
+**Swagat Murmu**  
+*Master of Computer Applications (MCA)*
+
+[![LinkedIn](https://img.shields.io)](YOUR_LINK_HERE)
+[![Portfolio](https://img.shields.io)](YOUR_LINK_HERE)
+
+### 🛠 Tech Stack
+
+| Category | Technologies |
+| :--- | :--- |
+| **Backend** | Java, Spring Boot |
+| **Frontend** | JavaScript (ES6+), React |
+| **Database** | SQL (MySQL/PostgreSQL) |
