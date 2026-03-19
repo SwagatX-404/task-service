@@ -34,14 +34,8 @@ spring:
 
 **Swagat Murmu**  
 *Master of Computer Applications (MCA)*
+- **Primary Skills:** 
+  - **Backend:** Java & Spring Boot
+  - **Frontend:** React & JavaScript
+  - **Database:** SQL
 
-[![LinkedIn](https://img.shields.io)](YOUR_LINK_HERE)
-[![Portfolio](https://img.shields.io)](YOUR_LINK_HERE)
-
-### 🛠 Tech Stack
-
-| Category | Technologies |
-| :--- | :--- |
-| **Backend** | Java, Spring Boot |
-| **Frontend** | JavaScript (ES6+), React |
-| **Database** | SQL (MySQL/PostgreSQL) |
